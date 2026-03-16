@@ -21,26 +21,28 @@
 // ============================================
 
 // TODO: Define el nombre de tu dominio
-const DOMAIN_NAME = "Mi Dominio";
+const DOMAIN_NAME = "Plataforma de nutricion persoanlizada"
 
 // TODO: Define el nombre de la entidad principal
 // Inclúyelo con espacios y mayúsculas/minúsculas
 // para poder aplicar transformaciones después
-const rawEntityName = "  nombre de la entidad  ";
+const rawEntityName = " Plan de alimentacion"
 
 // TODO: Define una categoría o tipo (string)
-const entityCategory = "Categoría del elemento";
+const entityCategory = "Nutricion";
 
 // TODO: Define un código identificador (string)
 // Elige un prefijo coherente con tu dominio
-const entityCode = "COD-001";
+const entityCode = "PNP-001";
 
 // TODO: Define una descripción corta (string)
 // Debe contener varias palabras para usar includes/slice
-const entityDescription = "Descripción interesante de la entidad del dominio asignado.";
+const entityDescription = "Plan personalizado de alimentacion saludable";
 
 // TODO: Define un dato numérico relevante (number)
-const mainValue = 0;
+const mainValue =1800; // ejemplo: Calorias diarias
+
+const alimentacion = "Alimentacion";
 
 // TODO: Define un estado booleano
 const isActive = true;
@@ -61,7 +63,7 @@ const entityNameLower = entityName.toLowerCase();
 
 // TODO: Extrae las primeras letras del código con slice()
 // para usarlas como prefijo de referencia
-const codePrefix = entityCode.slice(0, 3);
+const codePrefix = entityCode.slice(0,2)
 
 
 // ============================================
@@ -74,7 +76,7 @@ const hasValidPrefix = entityCode.startsWith(codePrefix);
 
 // TODO: Verifica si la descripción contiene una palabra clave
 // Usa includes() con una palabra importante de tu dominio
-const descriptionIsRelevant = entityDescription.includes("dominio");
+const descriptionIsRelevant = entityDescription.includes(alimentacion)
 
 // TODO: Verifica si el código termina con los dígitos
 // Usa endsWith() con algo coherente de tu dominio
@@ -92,17 +94,17 @@ const subSeparator = "-".repeat(45);
 // Usa TODAS las variables transformadas arriba
 const mainCard = `
 ${separator}
-  ${DOMAIN_NAME.toUpperCase()} — FICHA DE ENTIDAD
+  ${DOMAIN_NAME.toUpperCase()} — FICHA DE ALIMENTACION
 ${separator}
 Nombre:      ${entityNameUpper}
 Categoría:   ${entityCategory}
 Código:      ${entityCode}
 Prefijo:     ${codePrefix}
 Valor:       ${mainValue}
-Estado:      ${isActive ? "Activo" : "Inactivo"}
+Estado:      ${isActive ? "SI (FORMULADO)" : "NO  (NO FORMULADO)"}
 
 ${subSeparator}
-Descripción:
+Nota de aliemntacion
 ${entityDescription}
 ${separator}
 `;
@@ -116,8 +118,8 @@ console.log(mainCard);
 
 console.log("--- Validaciones ---");
 // TODO: Muestra los resultados de las validaciones con template literals
-console.log(`¿Código empieza con '${codePrefix}'?: ${hasValidPrefix}`);
-console.log(`¿Descripción contiene 'dominio'?: ${descriptionIsRelevant}`);
+console.log(`¿Prefijo '${codePrefix}' es valido ?: ${hasValidPrefix}`);
+console.log(`¿Menciona el alimento en la descripcion'?: ${descriptionIsRelevant}`);
 console.log(`¿Código termina con '001'?: ${hasValidSuffix}`);
 console.log("");
 
@@ -130,6 +132,6 @@ console.log("--- Notificación ---");
 
 // TODO: Construye un mensaje corto de una línea
 // Usa template literal con el nombre limpio y el código
-const notification = `📢 Nuevo elemento disponible: ${entityName} (${entityCode})`;
+const notification = `📢 Nuevo alimento formulado: ${entityName} (${entityCode})`;
 console.log(notification);
 console.log("");
